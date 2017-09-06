@@ -16,24 +16,51 @@
 
 HANDLE DllThread;
 TcpClient tcpClient;
+DWORD pid = GetCurrentProcessId();
 
 //int main(){
 DWORD WINAPI Main(LPVOID lpParam)
 {
-	DWORD pid = GetCurrentProcessId();
 	if (pid)
 	{
 		CheckModules(pid);
 		ListProcessThreads(pid);
+		postChecks();
 	}
 	else 
 	{
 		std::cout << "Game is not active." << std::endl;
 	}
-	
-	postChecks(pid);
+
 	CloseHandle(DllThread);
 	return 0;
+}
+
+void postChecks() {
+	while (true) {
+		Sleep(900000);
+		postDLLScan = true;
+		postThreadScan = true;
+		postDLL.clear();
+		postThread.clear();
+		ListProcessThreads(pid);
+		CheckModules(pid);
+		if (startingDLL.size() + deltaDLL.size() != postDLL.size()) {
+			int newDLLs = postDLL.size() - startingDLL.size();
+			for (int i = 0; i < newDLLs; i++) {
+				tcpClient.start(postDLL[(startingDLL.size() - 1) + (newDLLs - i)] + " injected after the game has started.");
+				deltaDLL.push_back(postDLL[(startingDLL.size() - 1) + (newDLLs - i)]);
+			}
+		}
+		if (startingThread.size() + deltaThread.size() != postThread.size()) {
+			int newThreads = postThread.size() - startingThread.size();
+			for (int i = 0; i < newThreads; i++) {
+				tcpClient.start(postThread[(startingThread.size() - 1) + (newThreads - i)] + " thread created after the game has started.");
+				deltaThread.push_back(postThread[(startingThread.size() - 1) + (newThreads - i)]);
+			}
+		}
+	}
+
 }
 
 //================================================================================================================
@@ -183,29 +210,3 @@ void printError(TCHAR* msg)
 	_tprintf(TEXT("\n  WARNING: %s failed with error %d (%s)"), msg, eNum, sysMsg);
 }
 
-void postChecks(int pid) {
-	while (pid) {
-		Sleep(900000);
-		postDLLScan = true;
-		postThreadScan = true;
-		postDLL.clear();
-		postThread.clear();
-		ListProcessThreads(pid);
-		CheckModules(pid);
-		if (startingDLL.size() + deltaDLL.size() != postDLL.size()) {
-			int newDLLs = postDLL.size() - startingDLL.size();
-			for (int i = 0; i < newDLLs; i++) {
-				tcpClient.start(postDLL[(startingDLL.size() - 1) + (newDLLs - i)] + " injected after the game has started.");
-				deltaDLL.push_back(postDLL[(startingDLL.size() - 1) + (newDLLs - i)]);
-			}
-		}
-		if (startingThread.size() + deltaThread.size() != postThread.size()) {
-			int newThreads = postThread.size() - startingThread.size();
-			for (int i = 0; i < newThreads; i++) {
-				tcpClient.start(postThread[(startingThread.size() - 1) + (newThreads - i)] + " thread created after the game has started.");
-				deltaThread.push_back(postThread[(startingThread.size() - 1) + (newThreads - i)]);
-			}
-		}
-	}
-
-}

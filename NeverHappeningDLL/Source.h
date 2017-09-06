@@ -19,7 +19,7 @@ std::vector<std::string> postThread;
 std::vector<std::string> deltaThread;
 bool postDLLScan;
 bool postThreadScan;
-void postChecks(int pid);
+void postChecks();
 BOOL ListProcessThreads(DWORD dwOwnerPID);
 void printError(TCHAR* msg);
 std::wstring BFHeroes(L"PROCESSNAME");
