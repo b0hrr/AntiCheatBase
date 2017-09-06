@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\th3g3ntlem4n\desktop\revive launcher\anti-cheat\neverhappeningdll\source.cpp(144): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+  NeverHappeningDLL.vcxproj -> C:\Users\th3g3ntlem4n\Desktop\Revive Launcher\Anti-Cheat\Debug\NeverHappeningDLL.dll
+  NeverHappeningDLL.vcxproj -> C:\Users\th3g3ntlem4n\Desktop\Revive Launcher\Anti-Cheat\Debug\NeverHappeningDLL.pdb (Full PDB)

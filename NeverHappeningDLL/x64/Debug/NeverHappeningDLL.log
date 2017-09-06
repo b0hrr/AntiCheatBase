@@ -1,0 +1,12 @@
+﻿  tcpClient.cpp
+c:\users\th3g3ntlem4n\desktop\revive launcher\anti-cheat\neverhappeningdll\tcpclient.cpp(79): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  stdafx.cpp
+  Source.cpp
+c:\users\th3g3ntlem4n\desktop\revive launcher\anti-cheat\neverhappeningdll\source.cpp(42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\th3g3ntlem4n\desktop\revive launcher\anti-cheat\neverhappeningdll\source.cpp(49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\th3g3ntlem4n\desktop\revive launcher\anti-cheat\neverhappeningdll\source.cpp(170): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+  Encryptor.cpp
+  Generating Code...
+  NeverHappeningDLL.vcxproj -> C:\Users\th3g3ntlem4n\Desktop\Revive Launcher\Anti-Cheat\x64\Debug\NeverHappeningDLL.dll
+  NeverHappeningDLL.vcxproj -> C:\Users\th3g3ntlem4n\Desktop\Revive Launcher\Anti-Cheat\x64\Debug\NeverHappeningDLL.pdb (Full PDB)
