@@ -1,6 +1,5 @@
 import socket
 import threading
-from itertools import cycle, izip
 import time
 
 bind_ip = '0.0.0.0'
@@ -20,7 +19,6 @@ def encryptDecrypt(input):
     return ''.join(output)
 
 print 'Listening on {}:{}'.format(bind_ip, bind_port)
-key = "B0HR"
 def handle_client_connection(client_socket):
     request = encryptDecrypt(client_socket.recv(1024))
     f = open("logs/" + address[0],'a')
